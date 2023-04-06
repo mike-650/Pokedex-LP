@@ -22,8 +22,8 @@ types = [
     "steel",]
 
 
-class Pokemans(db.Models):
-    __tablename__ = 'create_pokemon'
+class Pokemon(db.Models):
+    __tablename__ = 'Pokemons'
 
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     items = db.relationship('Item', backref='create_pokemon', lazy=True)
@@ -42,7 +42,7 @@ class Pokemans(db.Models):
 
 
 class Item(db.Models):
-    __tablename__ = 'items'
+    __tablename__ = 'Items'
     
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     happieness = db.Column(db.Integer, nullable=False) 
@@ -52,3 +52,6 @@ class Item(db.Models):
     pokemonId = db.Column(db.Integer, db.ForeignKey('pokemans.id'), nullable=False,)
     createdAt = db.Column(db.Date, default=datetime.utcnow, nullable=False)
     updatedAt = db.Column(db.Date, default=datetime.utcnow, nullable=False)
+    
+class PokemanType(db.models):
+    
