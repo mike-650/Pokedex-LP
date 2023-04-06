@@ -1,24 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField, SelectField, BooleanField, DecimalField, SubmitField
 from wtforms.validators import NumberRange, DataRequired
-
-types = [
-    "fire",
-    "electric",
-    "normal",
-    "ghost",
-    "psychic",
-    "water",
-    "bug",
-    "dragon",
-    "grass",
-    "fighting",
-    "ice",
-    "flying",
-    "poison",
-    "ground",
-    "rock",
-    "steel",]
+from .models import types
 
 class PokemansForm(FlaskForm):
     number = IntegerField(validators=[DataRequired()])
