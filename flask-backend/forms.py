@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, StringField, SelectField
+from wtforms import IntegerField, StringField, SelectField, BooleanField, DecimalField, SubmitField
+from wtforms.validators import NumberRange, DataRequired
 
 types = [
     "fire",
@@ -20,13 +21,14 @@ types = [
     "steel",]
 
 class PokemansForm(FlaskForm):
-    number = IntegerField()
-    attack = IntegerField()
-    defense = IntegerField()
-    imageUrl = StringField()
-    name = StringField()
+    number = IntegerField(validators=[DataRequired()])
+    attack = IntegerField(validators=[DataRequired()])
+    defense = IntegerField(validators=[DataRequired()])
+    imageUrl = StringField(validators=[DataRequired()])
+    name = StringField(validators=[DataRequired()])
     type = SelectField(choices=types)
-    moves = StringField()
-    encounterRate = 
-    catchRate = 
-    captured = 
+    moves = StringField(validators=[DataRequired()])
+    encounterRate = DecimalField(places=2,validators=[NumberRange(min=0.00,max=9.99),DataRequired()] )
+    catchRate = DecimalField(places=2,validators=[NumberRange(min=0.00,max=9.99),DataRequired()] )
+    captured = BooleanField(validators=[DataRequired()])
+    submit = SubmitField()
